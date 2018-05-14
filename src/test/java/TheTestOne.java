@@ -17,6 +17,7 @@ public class TheTestOne {
 
             WebDriver driver = new ChromeDriver();
 //            WebDriver driver = new FirefoxDriver();
+            //            WebDriver driver = new FirefoxDriver();
             driver.get("http://google.com");
 
             driver.quit();
