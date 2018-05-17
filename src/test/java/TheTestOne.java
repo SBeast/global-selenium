@@ -16,18 +16,18 @@ public class TheTestOne {
 
         @Test
         public void firstTest() {
-            ChromeDriverManager.getInstance().setup();
-//            FirefoxDriverManager.getInstance().setup();
+//            ChromeDriverManager.getInstance().setup();
+            FirefoxDriverManager.getInstance().setup();
 //            InternetExplorerDriverManager.getInstance().setup();
 //            EdgeDriverManager.getInstance().setup();
 
-            WebDriver driver = new ChromeDriver();
-//            WebDriver driver = new FirefoxDriver();
+//            WebDriver driver = new ChromeDriver();
+            WebDriver driver = new FirefoxDriver();
 //            WebDriver driver = new InternetExplorerDriver();
 //            WebDriver driver = new EdgeDriver();
 
-//            driver.get("http://localhost/litecart/");
-            driver.get("http://news.google.com.ua");
+            driver.get("http://localhost/litecart/");
+//            driver.get("http://news.google.com.ua");
 
             driver.quit();
 
