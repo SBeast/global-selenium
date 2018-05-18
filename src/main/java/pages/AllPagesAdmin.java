@@ -2,13 +2,16 @@ package pages;
 
 import org.openqa.selenium.WebDriver;
 
-public class AllPages2 {
+public class AllPagesAdmin {
     WebDriver driver;
     public AdminLoginPage2 adminLoginPage2;
+    public AdminMenu adminMenu;
+	
 
-    public AllPages2(WebDriver exterDriver) {
+    public AllPagesAdmin(WebDriver exterDriver) {
         this.driver = exterDriver;
         adminLoginPage2 = new AdminLoginPage2(driver);
+        adminMenu = new AdminMenu(driver);
 
     }
 }
