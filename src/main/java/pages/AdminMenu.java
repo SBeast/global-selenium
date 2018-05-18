@@ -937,7 +937,6 @@ public class AdminMenu {
     }
 
 
-
     /**
      * Method cliks on adminMenuTranslationsSubMenuCSV
      */
@@ -995,32 +994,6 @@ public class AdminMenu {
             System.out.println("Can not work with Button  " + this.adminMenuVQmodsSubMenuVQmods);
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }
