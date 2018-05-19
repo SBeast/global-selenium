@@ -34,8 +34,11 @@ public class ClickAllMenuOnAdminPage {
 
         allPages.adminLoginPage2.validAdminLogin(adminUserName, adminPassword, adminLoginPageURL);
 //        Assert.assertTrue(allPages.adminLoginPage2.isLoginBoxIsPresent());
+//        allPages.adminLoginPage2.closeBrowserAdminLoginPage();
+        allPages.adminMenu.clickAdminMenuAppearence();
+        allPages.adminMenu.clickAdminMenuAppearenceSubMenuTemplate();
+        allPages.adminMenu.clickAdminMenuAppearenceSubMenuLogotype();
         allPages.adminLoginPage2.closeBrowserAdminLoginPage();
-
 
     }
 
