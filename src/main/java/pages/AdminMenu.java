@@ -30,7 +30,7 @@ public class AdminMenu {
     WebElement adminMenuCatalog;
     @FindBy(xpath = ".//li[@id='doc-catalog']")
     WebElement adminMenuCatalogSubMenuCatalog;
-    @FindBy(xpath = ".//li[@id='doc-product_groups']]")
+    @FindBy(xpath = ".//li[@id='doc-product_groups']")
     WebElement adminMenuCatalogSubMenuProductGroups;
     @FindBy(xpath = ".//li[@id='doc-option_groups']")
     WebElement adminMenuCatalogSubMenuOptionGroups;
@@ -147,7 +147,7 @@ public class AdminMenu {
     @FindBy(xpath = ".//a[@href='http://localhost/litecart/admin/?app=users&doc=users']")
     WebElement adminMenuUsers;
 
-    @FindBy(xpath = ".//a[@http://localhost/litecart/admin/?app=vqmods&doc=vqmods']")
+    @FindBy(xpath = ".//a[@href='http://localhost/litecart/admin/?app=vqmods&doc=vqmods']")
     WebElement adminMenuVQmods;
     @FindBy(xpath = ".//li[@id='doc-vqmods']")
     WebElement adminMenuVQmodsSubMenuVQmods;

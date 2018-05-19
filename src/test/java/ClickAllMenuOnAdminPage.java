@@ -121,8 +121,9 @@ public class ClickAllMenuOnAdminPage {
         allPages.modulesOrderSuccessModules.isH1IsPresent();
         allPages.adminMenu.clickAdminMenuModulesSubMenuOrderAction();
         allPages.modulesOrderActionModules.isH1IsPresent();
-
-
+/**
+ * MenuOrders
+ */
         allPages.adminMenu.clickAdminMenuOrders();
         allPages.orders.isH1IsPresent();
         allPages.adminMenu.clickAdminMenuOrdersSubMenuOrders();
@@ -130,7 +131,79 @@ public class ClickAllMenuOnAdminPage {
         allPages.adminMenu.clickAdminMenuModulesSubMenuOrderStatuses();
         allPages.ordersOrderStatuses.isH1IsPresent();
 
+        /**
+         * MenuPages
+         */
+        allPages.adminMenu.clickAdminMenuPages();
+        allPages.pages.isH1IsPresent();
+/**
+ * MenuReports
+ */
+        allPages.adminMenu.clickAdminMenuReports();
+        allPages.reportsMonthlySales.isH1IsPresent();
+        allPages.adminMenu.clickAdminMenuModulesSubMenuMostSoldProducts();
+        allPages.reportsMostSoldProducts.isH1IsPresent();
+        allPages.adminMenu.clickAdminMenuModulesSubMenudocMostShoppingCustomers();
+        allPages.reportMostShoppingCustomers.isH1IsPresent();
+/**
+ * MenuSettings
+ */
+        allPages.adminMenu.clickAdminMenuSettings();
+        allPages.settingsInAdmin.isH1IsPresent();
+        allPages.adminMenu.clickAdminMenuSettingsSubMenuStoreInfo();
+        allPages.settingsInAdmin.isH1IsPresent();
+        allPages.adminMenu.clickAdminMenuSettingsSubMenuDefaults();
+        allPages.settingsDefaults.isH1IsPresent();
+        allPages.adminMenu.clickAdminMenuSettingsSubMenuGeneral();
+        allPages.settingsGeneral.isH1IsPresent();
+        allPages.adminMenu.clickAdminMenuSettingsSubMenuListings();
+        allPages.settingsListings.isH1IsPresent();
+        allPages.adminMenu.clickAdminMenuSettingsSubMenuiIages();
+        allPages.settingsImages.isH1IsPresent();
+        allPages.adminMenu.clickAdminMenuSettingsSubMenuCheckout();
+        allPages.settingsCheckout.isH1IsPresent();
+        allPages.adminMenu.clickAdminMenuSettingsSubMenuAdvanced();
+        allPages.settingsAdvanced.isH1IsPresent();
+        allPages.adminMenu.clickAdminMenuSettingsSubMenuSecurity();
+        allPages.settingsSecurity.isH1IsPresent();
+        /**
+         * MenuSlides
+         */
+        allPages.adminMenu.clickAdminMenuSlides();
+        allPages.slides.isH1IsPresent();
+/**
+ * MenuTax
+ */
+        allPages.adminMenu.clickAdminMenuTax();
+        allPages.taxClasses.isH1IsPresent();
+        allPages.adminMenu.clickAdminMenuTaxSubMenuTaxRates();
+        allPages.taxRates.isH1IsPresent();
+/**
+ * MenuTranslations
+ */
+        allPages.adminMenu.clickAdminMenuTranslations();
+        allPages.translationsSearch.isH1IsPresent();
+        allPages.adminMenu.clickAdminMenuTranslationsSubMenuSearchTranslations();
+        allPages.translationsSearch.isH1IsPresent();
+        allPages.adminMenu.clickAdminMenuTranslationsSubMenuSearchScanFiles();
+        allPages.translationScanFilesForTranslations.isH1IsPresent();
+        allPages.adminMenu.clickAdminMenuTranslationsSubMenuCSV();
+        allPages.translationsCSV.isH1IsPresent();
+        /**
+         * MenuUsers
+         */
+        allPages.adminMenu.clickAdminMenuUsers();
+        allPages.users.isH1IsPresent();
+        /**
+         * MenuVQmods
+         */
+        allPages.adminMenu.clickAdminMenuVQmods();
+        allPages.vQmods.isH1IsPresent();
+        allPages.adminMenu.clickAdminMenuVQmodsSubMenuVQmods();
+        allPages.vQmods.isH1IsPresent();
 
+
+//exit
 
         allPages.adminLoginPage2.closeBrowserAdminLoginPage();
 
