@@ -17,3 +17,6 @@ dependencies {
 
 }
 
+test{
+    maxParallelForks = 4
+}
