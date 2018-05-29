@@ -111,6 +111,15 @@ public class AllPagesAdmin {
      * vQmods group
      */
     public VQmods vQmods;
+    /**
+     * clickOnButton class
+     */
+    public ClickOnButton clickOnButton;
+    /**
+     * addNewProduct pages
+     */
+    public AddNewProduct addNewProduct;
+    public EditProduct editProduct;
 
 
     public AllPagesAdmin(WebDriver exterDriver) {
@@ -183,6 +192,11 @@ public class AllPagesAdmin {
         users = new Users(driver);
 
         vQmods = new VQmods(driver);
+
+        clickOnButton = new ClickOnButton(driver);
+
+        addNewProduct = new AddNewProduct(driver);
+        editProduct = new EditProduct(driver);
 
 
     }
