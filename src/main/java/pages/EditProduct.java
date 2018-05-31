@@ -1,6 +1,7 @@
 package pages;
 
 import org.junit.Assert;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -97,6 +98,9 @@ public class EditProduct {
     public void clickDelete () {
         String buttonDelete = ".//button[@name='delete']";
         clickOnButton(buttonDelete);
+//        driver.findElement(By.xpath(buttonDelete)).click();
+        Alert alert = driver.switchTo().alert();
+        alert.accept();
 
     }
 

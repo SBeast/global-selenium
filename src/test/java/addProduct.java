@@ -2,6 +2,8 @@ import io.github.bonigarcia.wdm.FirefoxDriverManager;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -66,8 +68,16 @@ public class AddProduct {
         allPages.catalog.clickOnRubberDucksGroup();
         allPages.catalog.isElementPresent(productName);
         //delete added product
-//        allPages.adminMenu.clickAdminMenuCatalog();
-//        allPages.catalog.clickOnRubberDucksGroup();
+        allPages.adminMenu.clickAdminMenuCatalog();
+        allPages.catalog.clickOnRubberDucksGroup();
+        allPages.catalog.clickOnProduct(productName);
+        allPages.editProduct.clickDelete();
+//        driver.findElement(By.xpath(".//button[@name='delete']")).click();
+//        System.out.println("de;ete clicled");
+//        Alert alert = driver.switchTo().alert();
+//        System.out.println("switched to alert");
+//        alert.accept();
+
 
 
 

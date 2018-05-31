@@ -63,6 +63,12 @@ public class Catalog {
         clickOnButton(rubberDucksGroup);
     }
 
+    public void clickOnProduct (String productName) {
+        String productXPath = ".//a[contains(text(),'"+ productName +"')]";
+        clickOnButton(productXPath);
+
+    }
+
 
     private void clickOnButton(String buttonXPath) {
 
