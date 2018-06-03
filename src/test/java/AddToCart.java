@@ -45,6 +45,8 @@ public class AddToCart {
     final String removeButton = ".//button[@name='remove_cart_item']";
     final String tableRowsXpath = ".//td[@class='item']";
     final String tableXpath = ".//table[@class='dataTable rounded-corners']//tbody";
+//    final  String cartQuantityXpath = ".//span[@class='quantity']";
+    final  String cartQuantityXpath = ".//div [@id='cart']";
 
 
     @Before
@@ -66,6 +68,9 @@ public class AddToCart {
 
             clickOnElement(productXpath);
             ifDropDownPresent(dropDownXpath, valueDropDown, addToCartXpath);
+            WebElement cartQuantity = driver.findElement(By.xpath(".//a[@class='content']"));
+            System.out.println(cartQuantity);
+            webDriverWait.until(ExpectedConditions.stalenessOf(cartQuantity));
             clickOnElement(logo);
         }
         clickOnElement(cart);
@@ -77,9 +82,9 @@ public class AddToCart {
     private void driverStart() {
         FirefoxDriverManager.getInstance().setup();
         driver = new FirefoxDriver();
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();
-        webDriverWait = new WebDriverWait(driver, 5);
+        webDriverWait = new WebDriverWait(driver, 10);
 
 //        ChromeDriverManager.getInstance().setup();
 //        driver = new ChromeDriver();
@@ -154,7 +159,8 @@ public class AddToCart {
             clickOnElement(removeButton);
             System.out.println(c);
             driver.navigate().refresh();
-            this.webDriverWait.until(ExpectedConditions.refreshed(ExpectedConditions.presenceOfElementLocated(By.xpath(tableXpath))));
+            WebElement table = driver.findElement(By.xpath(tableXpath));
+            this.webDriverWait.until(ExpectedConditions.stalenessOf(table));
 //            this.webDriverWait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(tableXpath))).
         }
     }
