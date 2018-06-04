@@ -9,6 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -20,8 +21,10 @@ import java.util.concurrent.TimeUnit;
 
 public class AddToCart {
 
-    WebDriver driver;
+//    WebDriver driver;
     WebDriverWait webDriverWait;
+    EventFiringWebDriver eventDriver;
+
 
 
     /**
@@ -45,8 +48,8 @@ public class AddToCart {
     final String removeButton = ".//button[@name='remove_cart_item']";
     final String tableRowsXpath = ".//td[@class='item']";
     final String tableXpath = ".//table[@class='dataTable rounded-corners']//tbody";
-//    final  String cartQuantityXpath = ".//span[@class='quantity']";
-    final  String cartQuantityXpath = ".//div [@id='cart']";
+    //    final  String cartQuantityXpath = ".//span[@class='quantity']";
+    final String cartQuantityXpath = ".//div [@id='cart']";
 
 
     @Before
@@ -64,47 +67,58 @@ public class AddToCart {
     public void addToCart() {
 
 
+
         for (int i = 0; i < 5; i++) {
 
             clickOnElement(productXpath);
             ifDropDownPresent(dropDownXpath, valueDropDown, addToCartXpath);
-            WebElement cartQuantity = driver.findElement(By.xpath(".//a[@class='content']"));
+            WebElement cartQuantity = eventDriver.findElement(By.xpath(".//a[@class='content']"));
             System.out.println(cartQuantity);
-            webDriverWait.until(ExpectedConditions.stalenessOf(cartQuantity));
+//            webDriverWait.until(ExpectedConditions.stalenessOf(cartQuantity));
             clickOnElement(logo);
         }
         clickOnElement(cart);
-        ifRemovePresent( tableXpath, tableRowsXpath);
+        ifRemovePresent(tableXpath, tableRowsXpath);
 
     }
 
 
     private void driverStart() {
+
+
+
         FirefoxDriverManager.getInstance().setup();
-        driver = new FirefoxDriver();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.manage().window().maximize();
-        webDriverWait = new WebDriverWait(driver, 10);
+        eventDriver = new EventFiringWebDriver(new FirefoxDriver());
+
+        eventDriver.register(new Listener());
+        eventDriver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        eventDriver.manage().window().maximize();
+
+
 
 //        ChromeDriverManager.getInstance().setup();
 //        driver = new ChromeDriver();
-//        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+//        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 //        driver.manage().window().maximize();
-//        webDriverWait = new WebDriverWait(driver, 5);
+//        eventDriver = new EventFiringWebDriver(new ChromeDriver());
 
-        driver.get(baseURL);
+
+        webDriverWait = new WebDriverWait(eventDriver, 5);
+        eventDriver.get(baseURL);
+
+
 
     }
 
     private void driverStop() {
-        if (driver != null) driver.quit();
+        if (eventDriver != null) eventDriver.quit();
     }
 
     private void clickOnElement(String elementXpath) {
 
         try {
-            this.webDriverWait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath(elementXpath))));
-            WebElement element = driver.findElement(By.xpath(elementXpath));
+            this.webDriverWait.until(ExpectedConditions.elementToBeClickable(eventDriver.findElement(By.xpath(elementXpath))));
+            WebElement element = eventDriver.findElement(By.xpath(elementXpath));
             element.click();
             System.out.println(elementXpath + wasClicked);
 
@@ -118,7 +132,7 @@ public class AddToCart {
 
 
 //        boolean ifElementPresents = driver.findElement(By.xpath(elementXpath)).isDisplayed();
-        int ifElementPresents = driver.findElements(By.xpath(elementXpath)).size();
+        int ifElementPresents = eventDriver.findElements(By.xpath(elementXpath)).size();
         System.out.println(ifElementPresents);
 
         if (ifElementPresents > 0) {
@@ -126,9 +140,9 @@ public class AddToCart {
 
             By dropdownMenu = By.xpath(elementXpath);
             this.webDriverWait.until(ExpectedConditions.elementToBeClickable(dropdownMenu));
-            Select value = new Select(driver.findElement(dropdownMenu));
+            Select value = new Select(eventDriver.findElement(dropdownMenu));
             value.selectByValue(valueForElement);
-            driver.findElement(By.xpath(addToCartXpath)).click();
+            eventDriver.findElement(By.xpath(addToCartXpath)).click();
 
         } else {
             clickOnElement(addToCartXpath);
@@ -141,9 +155,9 @@ public class AddToCart {
         try {
             By dropdownMenu = By.xpath(elementXpath);
             this.webDriverWait.until(ExpectedConditions.elementToBeClickable(dropdownMenu));
-            Select value = new Select(driver.findElement(dropdownMenu));
+            Select value = new Select(eventDriver.findElement(dropdownMenu));
             value.selectByValue(valueForElement);
-            driver.findElement(By.xpath(addToCartXpath)).click();
+            eventDriver.findElement(By.xpath(addToCartXpath)).click();
         } catch (Exception E) {
             System.out.println("NO dropdownMenu");
             clickOnElement(addToCartXpath);
@@ -151,24 +165,24 @@ public class AddToCart {
 
     }
 
-    private void ifRemovePresent(String tableXpath,  String tableRowsXpath) {
+    private void ifRemovePresent(String tableXpath, String tableRowsXpath) {
         this.webDriverWait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(tableRowsXpath)));
-        int tableRows = driver.findElements(By.xpath(tableRowsXpath)).size();
+        int tableRows = eventDriver.findElements(By.xpath(tableRowsXpath)).size();
         System.out.println(tableRows + " rows is present");
         for (int c = 0; c < tableRows; c++) {
             clickOnElement(removeButton);
             System.out.println(c);
-            driver.navigate().refresh();
-            WebElement table = driver.findElement(By.xpath(tableXpath));
-            this.webDriverWait.until(ExpectedConditions.stalenessOf(table));
-//            this.webDriverWait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(tableXpath))).
+            eventDriver.navigate().refresh();
+            WebElement table = eventDriver.findElement(By.xpath(tableXpath));
+//            this.webDriverWait.until(ExpectedConditions.stalenessOf(table));
+
         }
     }
 
     private void ifRemovePresent2(String elementXpath, String logo, String tableRowsXpath) {
 
         this.webDriverWait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(tableRowsXpath)));
-        int tableRows = driver.findElements(By.xpath(tableRowsXpath)).size();
+        int tableRows = eventDriver.findElements(By.xpath(tableRowsXpath)).size();
         System.out.println(tableRows + "remove is present");
         for (int i = 0; i >= tableRows; i++) {
             clickOnElement(elementXpath);
