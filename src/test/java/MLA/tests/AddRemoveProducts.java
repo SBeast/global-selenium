@@ -18,7 +18,7 @@ public class AddRemoveProducts {
     WebDriver driver;
 
     String baseURL = "http://localhost/litecart/";
-    int quantity = 20 ;
+    int quantity = 3 ;
     String valueDropDown = "Small";
 
     @Before
